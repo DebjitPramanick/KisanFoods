@@ -7,11 +7,12 @@ import { FormControlLabel, Radio, RadioGroup } from '@material-ui/core';
 
 const Register = (props) => {
 
-    const history = useHistory()
 
     const [user, setUser] = useState({})
     const [popup, setPopup] = useState(false)
     const [value, setValue] = useState('Farmer');
+
+    const history = useHistory()
 
     const types = ['Farmer', 'Consumer', 'Others']
 
@@ -66,7 +67,6 @@ const Register = (props) => {
         }
         
     }
-    console.log(user)
 
 
     return (
