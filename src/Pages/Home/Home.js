@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import Carousel from "react-material-ui-carousel";
 import './home.css'
-
+import Product from './Product'
 // import "slick-carousel/slick/slick.css";
 // import "slick-carousel/slick/slick-theme.css";
 // import Slider from "react-slick";
@@ -86,16 +86,17 @@ const Home = () => {
               />
             </div>
 
-            <img
-              className="home_carousal"
-              src="https://navnirmaan.org/wp-content/uploads/2020/09/1478506418_wheat-field.jpg"
-              alt="Carousal here"
-            />
-
             <div className="carousel_design">
               <img
                 className="home_carousal"
-                src="https://www.rti.org/sites/default/files/p010827_istock_8864284_2500.jpg"
+                src="https://images.unsplash.com/photo-1574943320219-553eb213f72d?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mnx8ZmFybWVyfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+                alt="Carousal here"
+              />
+              
+            </div><div className="carousel_design">
+              <img
+                className="home_carousal"
+                src="https://images.unsplash.com/photo-1574943320219-553eb213f72d?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mnx8ZmFybWVyfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
                 alt="Carousal here"
               />
             </div>
@@ -103,6 +104,9 @@ const Home = () => {
 
           <br></br><br></br>
 
+          <Product />
+
+          <br></br><br></br>
           <div className="row ">
             <div className="col-sm-4">
               <Card />
