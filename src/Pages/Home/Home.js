@@ -3,9 +3,9 @@ import Carousel from "react-material-ui-carousel";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import './home.css'
-import Slider from "react-slick";
+// import Slider from "react-slick";
 import Card from './Card'
-import Owl from './Owl_Car'
+// import Owl from './Owl_Car'
 const Home = () => {
     var settings = {
         dots: true,

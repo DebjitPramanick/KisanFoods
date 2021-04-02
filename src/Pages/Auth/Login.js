@@ -17,7 +17,7 @@ const Login = () => {
                     <div className="input-form">
 
                         <div className="brand">
-                            <img src={Logo} style={{width: '100px'}}></img>
+                            <img src={Logo} style={{width: '100px'}} alt=""></img>
                         </div>
 
                         <button className="login-btn">
