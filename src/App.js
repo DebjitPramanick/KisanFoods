@@ -1,11 +1,22 @@
 import React from 'react'
+import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom'
 import "./App.css"
+import Profile from './Pages/Profile'
+import SideDrawer from './Pages/SideDrawer'
+import Statistics from './Pages/Statistics'
 
 const App = () => {
     return (
-        <div>
-            This is the app.
-        </div>
+        <>
+        <BrowserRouter>
+        {/* <Statistics /> */}
+            <Switch>
+                <Route exact path="/" component={Statistics} />
+                <Route path="/profile" component={Profile} />
+                <Redirect to="/" />
+            </Switch>
+        </BrowserRouter>
+        </>
     )
 }
 
