@@ -46,7 +46,6 @@ const Register = (props) => {
                     profile_img: user.profile_img,
                     userType: value
                 }
-
                 localStorage.setItem('user', JSON.stringify(userData))
                 history.replace("/")
             }
