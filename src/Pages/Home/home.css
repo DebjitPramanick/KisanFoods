@@ -1,0 +1,20 @@
+.body{
+    /* background-image: linear-gradient(315deg, #00b712 0%, #5aff15 74%);; */
+    background-color: burlywood;
+    height:'200vh'
+}
+.home_carousal {
+    width: 100%;
+    z-index: -1;
+    margin-bottom: -150px;
+    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+  }
+  .home {
+    display: flex;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+    min-width: 1200px;
+  }
+  
