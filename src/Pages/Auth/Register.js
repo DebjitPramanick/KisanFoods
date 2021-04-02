@@ -2,11 +2,10 @@ import React, { useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import "./style.css"
 import Logo from "../../Assets/logo.png"
-import { auth, provider } from "../../Utils/Firebase"
+import { auth, provider, userDB } from "../../Utils/Firebase"
 import { FormControlLabel, Radio, RadioGroup } from '@material-ui/core';
 
 const Register = (props) => {
-
 
     const [user, setUser] = useState({})
     const [popup, setPopup] = useState(false)
@@ -37,24 +36,39 @@ const Register = (props) => {
     }
 
     const handleContinue = () => {
-        if(value === "Others"){
+        if (value === "Others") {
             const code = prompt("Enter secret code: ")
-            if(code === "kisanfoods"){
+            if (code === "kisanfoods") {
+
+                const time = new Date().getTime()
+                const userID = `${user.name.split(" ")[0]}${time}`
+
                 const userData = {
+                    id: userID,
                     name: user.name,
                     email: user.email,
                     profile_img: user.profile_img,
                     userType: value
                 }
                 localStorage.setItem('user', JSON.stringify(userData))
+
+                userDB.doc(userID).set(userData)
+                .catch((error) => {
+                    console.error("Error writing document: ", error);
+                });
+
                 history.replace("/")
             }
-                
             else alert('Wrong code. Try again!')
         }
 
-        else{
+        else {
+            
+            const time = new Date().getTime()
+            const userID = `${user.name.split(" ")[0]}${time}`
+
             const userData = {
+                id: userID,
                 name: user.name,
                 email: user.email,
                 profile_img: user.profile_img,
@@ -62,9 +76,17 @@ const Register = (props) => {
             }
 
             localStorage.setItem('user', JSON.stringify(userData))
+
+            userDB.doc(userID).set(userData)
+                .then(() => {
+                    console.log("Document successfully written!");
+                })
+                .catch((error) => {
+                    console.error("Error writing document: ", error);
+                });
             history.replace("/")
         }
-        
+
     }
 
 
@@ -94,11 +116,9 @@ const Register = (props) => {
 
                 <div className="input-col">
                     <div className="input-form">
-
                         <div className="brand">
                             <img src={Logo} style={{ width: '100px' }} alt=""></img>
                         </div>
-
                         <button className="register-btn" onClick={googleRegister}>
                             Register with Google
                         </button>

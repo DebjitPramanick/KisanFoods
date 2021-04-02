@@ -12,13 +12,12 @@
     "firebase": "^8.3.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-router-dom": "^5.2.0",
-<<<<<<< HEAD
-=======
     "react-material-ui-carousel": "^2.2.2",
->>>>>>> bdafb823d8dc5dc7a0eef02df45e4cec56fb5e0e
+    "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
+    "react-slick": "^0.28.1",
     "recharts": "^2.0.9",
+    "slick-carousel": "^1.8.1",
     "web-vitals": "^1.1.1"
   },
   "scripts": {

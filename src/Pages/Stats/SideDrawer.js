@@ -107,13 +107,13 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function SideDrawer(props) {
-    const open = props;
-    const handleDrawerClose = props;
-    const classes = useStyles();
-    const {history} = props
-    return (
-        <div>
-            <Drawer
+  const open = props;
+  const handleDrawerClose = props;
+  const classes = useStyles();
+  const { history } = props
+  return (
+    <div>
+      <Drawer
         variant="permanent"
         classes={{
           paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),
@@ -127,13 +127,13 @@ function SideDrawer(props) {
         </div>
         <Divider />
         <List>
-        <ListItem button>
-      <ListItemIcon>
-        <DashboardIcon />
-      </ListItemIcon>
-      <ListItemText primary="Statistics" />
-    </ListItem>
-    {/* <ListItem button>
+          <ListItem button>
+            <ListItemIcon>
+              <DashboardIcon />
+            </ListItemIcon>
+            <ListItemText primary="Statistics" />
+          </ListItem>
+          {/* <ListItem button>
       <ListItemIcon>
         <ShoppingCartIcon />
       </ListItemIcon>
@@ -145,23 +145,23 @@ function SideDrawer(props) {
       </ListItemIcon>
       <ListItemText primary="Customers" />
     </ListItem> */}
-    <ListItem button onClick={() => history.push('/profile')}>
-      <ListItemIcon>
-        <BarChartIcon />
-      </ListItemIcon>
-      <ListItemText primary="Profile Update" />
-    </ListItem>
-    <ListItem button>
-      <ListItemIcon>
-        <LayersIcon />
-      </ListItemIcon>
-      <ListItemText primary="Integrations" />
-    </ListItem>
+          <ListItem button onClick={() => history.push('/profile')}>
+            <ListItemIcon>
+              <BarChartIcon />
+            </ListItemIcon>
+            <ListItemText primary="Profile Update" />
+          </ListItem>
+          <ListItem button>
+            <ListItemIcon>
+              <LayersIcon />
+            </ListItemIcon>
+            <ListItemText primary="Integrations" />
+          </ListItem>
         </List>
         <Divider />
-        
+
       </Drawer>
-        </div>
-    )
+    </div>
+  )
 }
-export default withRouter (SideDrawer)
+export default withRouter(SideDrawer)
