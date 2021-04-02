@@ -77,6 +77,10 @@
     margin: 16px 0;
 }
 
+.checkbox-bg label{
+    margin-bottom: 0;
+}
+
 
 /* Input form contents */
 
