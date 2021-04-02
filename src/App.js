@@ -1,10 +1,21 @@
 import React from 'react'
 import "./App.css"
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
+import Login from './Pages/Auth/Login'
+import Register from './Pages/Auth/Register'
 
 const App = () => {
     return (
         <div>
-            This is the app.
+            <Router>
+                <Switch>
+                    <Route path="/login" exact component={Login}></Route>
+                    <Route path="/register" exact component={Register}></Route>
+
+                    <Route path="/dashboard" exact></Route>
+                    <Route path="/home" exact></Route>
+                </Switch>
+            </Router>
         </div>
     )
 }
