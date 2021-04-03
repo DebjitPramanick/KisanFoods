@@ -11,11 +11,11 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const firebaseApp = firebase.initializeApp(firebaseConfig);
-
+const api="AIzaSyA9uhmM6gsIwgjAu2-Rb5ofIlvqz69sGZQ"
 const userDB = firebaseApp.firestore().collection('Users')
 const auth = firebase.auth()
 const provider = new firebase.auth.GoogleAuthProvider();
 const Products = firebaseApp.firestore().collection('Products')
 
 
-export {auth,provider,userDB,Products }
+export {auth,provider,userDB,Products,api }

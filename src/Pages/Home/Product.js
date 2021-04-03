@@ -3,7 +3,7 @@ import AddIcon from '@material-ui/icons/Add';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button'
-import {Products} from '../../Utils/Firebase'
+import {Products,api} from '../../Utils/Firebase'
 import { v1 as uuidv1 } from 'uuid'; 
 
 const useStyles = makeStyles((theme) => ({
@@ -24,20 +24,37 @@ function Product() {
     const [prods,useprods]=useState([]);
     var data = JSON.parse(localStorage.getItem('user'));
     const [string,totalstring]=useState('');
-    const [geo,setgeo]=useState('');
-    
+    const [lat,setlat]=useState('');
+    const [lon,setlon]=useState('');
+    var img_url;
     useEffect(()=>{
-       const getLocation=()=>{
-        fetch("https://geolocation-db.com/json/f746f3f0-9393-11eb-bbed-1d442d4cd8d7")
-        .then(res=>res.json())
-        .then(datageo=>{
-            console.log(datageo);
-        })
-        .catch(err=>{
-            console.log(err)
-        })
-    }
-    getLocation();
+    function getLocation() {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(showPosition=>{
+            setlat(showPosition.coords.latitude);  
+            setlon(showPosition.coords.longitude);  
+            console.log(showPosition);
+            console.log(lat + " " + lon);
+            var latlon = lat + "," + lon;
+
+            img_url = `https://maps.googleapis.com/maps/api/staticmap?center=${latlon}&zoom=14&size=400x300&sensor=false&key=${api}`;
+          console.log(img_url)
+          });
+        } else {
+          alert("Geolocation is not supported by this browser.");
+        }
+      }
+      getLocation();
+
+
+      function showPosition(position) {
+     
+        var latlon = lat + "," + lon;
+
+        img_url = `https://maps.googleapis.com/maps/api/staticmap?center="+latlon+"&zoom=14&size=400x300&sensor=false&key=${api}`;
+      
+      }
+
     },[])
     function add_prods(e)
     {
@@ -69,12 +86,15 @@ function Product() {
         console.log(res)
     })
     .catch(err=>{
+        alert("cannot post product,unexpected error occured...")
         console.log(err)
     })    
     }
 
     return (
         <div style={{display:(data.userType)==='Farmer'?'block':'none'}}>
+            <img src={img_url} />
+            
             <h5 className="text-center" style={{fontWeight:'bolder',font:'#333',textTransform:'capitalize',textDecoration:'underline'}}>post a product</h5>    
             <div onClick={(e)=>setToggle(true)} style={{width:'80%',height:'200px',border:'2px dotted #fff',borderRadius:'50px',margin:'auto',display:toggle?'none':'block'}}>
             <div className="d-flex justify-content-center" style={{marginTop:'70px',color:'#fff'}}>
