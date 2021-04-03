@@ -1,7 +1,7 @@
 ## KisanFoods For Farmers
 
 > ### Live web app: https://kisan-foods.web.app/
-> ### Submission code: 
+> ### Submission link: https://devfolio.co/submissions/kisanfoods-for-farmers-be91 
 <br>
 <br>
 <img src="./screenshots/ss1.png" alt=""/>
