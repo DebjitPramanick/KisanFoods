@@ -129,7 +129,6 @@ function Product() {
             
             <div className="d-flex flex-wrap justify-content-evenly mt-3">
             {prods.map(data=>{
-                console.log(data);
 
                 return (
                         

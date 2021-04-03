@@ -1,14 +1,94 @@
-*{
-    margin: 0;
-    padding: 0;
-    font-family: Arial, Helvetica, sans-serif;
-   
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-a{
-    text-decoration: none;
+a {
+  text-decoration: none;
 }
 
-ul{
-    list-style-type: none;
+ul {
+  list-style-type: none;
+}
+
+/* Navigation Bar */
+
+.home-nav {
+  background-color: rgb(151, 102, 38);
+  padding: 16px 0;
+}
+.home-nav .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0;
+}
+
+.home-nav .brand {
+  margin: 0 !important;
+  border: 4px solid rgb(78, 53, 0);
+  border-radius: 60px;
+  display: flex;
+  align-items: center;
+  color: white;
+  font-size: 16px;
+  padding-right: 10px;
+}
+.brand p {
+  margin: 0;
+  margin-left: 10px;
+  font-weight: bold;
+}
+
+.home-nav ul {
+  margin: 0;
+}
+
+.home-nav ul li {
+  display: inline-block;
+  margin-left: 16px;
+  font-size: 18px;
+  color: white;
+}
+
+.home-nav li a {
+  color: white;
+  font-size: 18px;
+}
+
+.user-sec {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  column-gap: 16px;
+}
+
+.username {
+  border: 1px solid white;
+  border-radius: 4px;
+  padding: 4px 10px;
+}
+
+.logout-btn {
+  background-color: white;
+  outline: 0;
+  border: 0;
+  padding: 4px 10px;
+}
+
+.auth-btns {
+  display: flex;
+  align-items: center;
+  column-gap: 16px;
+}
+
+.auth-btns a {
+  padding: 4px 10px;
+  border: 1px solid white;
+  border-radius: 4px;
+}
+
+.auth-btns p {
+  margin: 0;
 }

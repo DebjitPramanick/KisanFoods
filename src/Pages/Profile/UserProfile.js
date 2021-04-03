@@ -2,9 +2,15 @@ import React,{useState} from 'react'
 import './user.css'
 import Button from '@material-ui/core/Button'
 
-function UserProfile() {
+function UserProfile(props) {
    
     var data = JSON.parse(localStorage.getItem('product_details'));
+
+    const handlePay = () => {
+        props.history.push('/payment')
+        console.log(props);
+    }
+
     return (
         <div  className="body1">
             
@@ -30,7 +36,8 @@ function UserProfile() {
         </div>
      
         <div className="d-flex justify-content-center">
-        <Button  variant="contained" color="secondary" className="mt-2">
+        <Button  variant="contained" color="secondary" className="mt-2"
+        onClick={handlePay}>
         Proceed to Pay
         </Button>
         </div>
