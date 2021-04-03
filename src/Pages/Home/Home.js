@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import Carousel from "react-material-ui-carousel";
 import './home.css'
 import Product from './Product'
+import {Products} from '../../Utils/Firebase'
 // import "slick-carousel/slick/slick.css";
 // import "slick-carousel/slick/slick-theme.css";
 // import Slider from "react-slick";
@@ -24,7 +25,8 @@ const Home = () => {
   const user = JSON.parse(localStorage.getItem('user'))
   const [name, setName] = useState('')
   const [nullUser, setNullUser] = useState(false)
-
+  const [data,setdata]=useState([]);
+var item=[{}];
   useEffect(() => {
     if(user){
       setName(user.name.split(" ")[0])
@@ -33,8 +35,21 @@ const Home = () => {
       setNullUser(true)
     }
   }, [user])
+  useEffect(() => {
+    const getdata=async()=>{
+    const havedata=await Products.get()
+    .then(snapshot=>{
+      snapshot.docs.forEach(doc=>{
+      setdata([...data,doc.data()]);
+      })
+      
+    })
+    }
+    getdata();
+   
+  }, [])
 
-
+   console.log(data);
   const handleLogout = () => {
     localStorage.removeItem('user')
     setNullUser(true)
@@ -76,8 +91,8 @@ const Home = () => {
 
       </div>
       <div className="home">
-        <div className="home_container">
-          <Carousel autoPlay animation="slide">
+        <div >
+          <Carousel className="home_container" autoPlay animation="slide" >
             <div className="carousel_design">
               <img
                 className="home_carousal"
@@ -107,8 +122,8 @@ const Home = () => {
           <Product />
 
           <br></br><br></br>
-          <div className="row ">
-            <div className="col-sm-4">
+          <div className="">
+            {/* <div className="col-sm-4">
               <Card />
             </div>
             <div className="col-sm-4">
@@ -128,7 +143,21 @@ const Home = () => {
             </div>
             <div className="col-sm-4">
               <Card />
+            </div> */}
+
+          <div className="d-flex flex-wrap">
+           {
+             data.map(data=>{
+             return (
+              <div className="px-2">
+              <Card userdata={data} />
             </div>
+             )
+             })
+           }
+          </div>
+
+
           </div>
 
           <br></br>

@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import AddIcon from '@material-ui/icons/Add';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
@@ -24,6 +24,21 @@ function Product() {
     const [prods,useprods]=useState([]);
     var data = JSON.parse(localStorage.getItem('user'));
     const [string,totalstring]=useState('');
+    const [geo,setgeo]=useState('');
+    
+    useEffect(()=>{
+       const getLocation=()=>{
+        fetch("https://geolocation-db.com/json/f746f3f0-9393-11eb-bbed-1d442d4cd8d7")
+        .then(res=>res.json())
+        .then(datageo=>{
+            console.log(datageo);
+        })
+        .catch(err=>{
+            console.log(err)
+        })
+    }
+    getLocation();
+    },[])
     function add_prods(e)
     {
         // e.target.value=null;
@@ -36,14 +51,21 @@ function Product() {
 
     function submit(e)
     {
-    if(!products) return;
+    // if(!products) return;
     
+   
+    console.log('res');
     Products.doc(uuidv1()).set({
         location:location,
         price:price,
-        products:string
+        products:string,
+        name:data.name,
+        email:data.email,
+        image:data.profile_img
     })
     .then(res=>{
+        
+        alert("product posted")
         console.log(res)
     })
     .catch(err=>{

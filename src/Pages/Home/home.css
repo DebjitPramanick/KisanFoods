@@ -1,10 +1,13 @@
 .body{
     /* background-image: linear-gradient(315deg, #00b712 0%, #5aff15 74%);; */
     background-image: linear-gradient(rgb(255, 223, 116), rgb(189, 116, 20));
-    height:'200vh'
+    height:300vh;
+    width:100%
 }
+
 .home_carousal {
-    width: 100%;
+    /* overflow: hidden;   */
+    width:100%;
     height:500px;
     z-index: -1;
     margin-bottom: -150px;
