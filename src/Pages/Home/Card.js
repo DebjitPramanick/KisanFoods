@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -7,7 +7,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 const useStyles = makeStyles({
   root: {
     maxWidth: 345,
@@ -17,17 +17,15 @@ const useStyles = makeStyles({
   },
 });
 
-export default function MediaCard({userdata}) {
+export default function MediaCard({ userdata }) {
   const classes = useStyles();
   var data = JSON.parse(localStorage.getItem('user'));
-console.log(userdata);
 
-function setprofile(dataset)
-{
-  localStorage.removeItem('product_details')
-  
-localStorage.setItem('product_details', JSON.stringify(dataset))
-}
+  function setprofile(dataset) {
+    localStorage.removeItem('product_details')
+
+    localStorage.setItem('product_details', JSON.stringify(dataset))
+  }
 
   return (
     <Card className={classes.root}>
@@ -38,22 +36,22 @@ localStorage.setItem('product_details', JSON.stringify(dataset))
           title="sample image"
         />
         <CardContent>
-         <div className="d-flex justify-content-between">
-         <div>
-         <p style={{font:'15px',color:'#131313'}}>
-            Items
+          <div className="d-flex justify-content-between">
+            <div>
+              <p style={{ font: '15px', color: '#131313' }}>
+                Items
             <br></br>
-            {userdata.products}
-          </p>
-         </div>
-          <div>
-          <p style={{font:'20px',color:'#131313'}}>
-            Seller Name
+                {userdata.products}
+              </p>
+            </div>
+            <div>
+              <p style={{ font: '20px', color: '#131313' }}>
+                Seller Name
             <br></br>
-            {userdata.name}
-          </p>
+                {userdata.name}
+              </p>
+            </div>
           </div>
-         </div>
 
           <Typography variant="body2" color="textSecondary" component="p">
             Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
@@ -62,10 +60,10 @@ localStorage.setItem('product_details', JSON.stringify(dataset))
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary" style={{display:(data.userType)==='Consumer'?'block':'none'}}>
+        <Button size="small" color="primary" style={{ display: (data.userType) === 'Others' ? 'block' : 'none' }}>
           Take Job
         </Button>
-        <Button  size="small" color="primary" style={{display:(data.userType)==='Farmer' || (data.userType)==='Others'?'block':'none'}}>
+        <Button size="small" color="primary" style={{ display: (data.userType) === 'Farmer' || (data.userType) === 'Others' || (data.userType) === 'Consumer' ? 'block' : 'none' }}>
           <Link onClick={setprofile(userdata)} to="/userprofile">Learn More</Link>
         </Button>
       </CardActions>

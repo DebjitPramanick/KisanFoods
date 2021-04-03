@@ -3,28 +3,49 @@ import Carousel from "react-material-ui-carousel";
 import './home.css'
 import Product from './Product'
 import { Products } from '../../Utils/Firebase'
-
+import Logo from "../../Assets/logo.png"
 import Card from './Card'
 import { Link } from 'react-router-dom';
-const Home = () => {
-  var settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 2,
-    slidesToScroll: 1,
-    autoplay: true,
-  }
+const Home = (props) => {
 
   const [data, setdata] = useState([]);
   var item = [{}];
 
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')) || {})
+  const [name, setName] = useState('')
+  const [nullUser, setNullUser] = useState(true)
+
+  useEffect(() => {
+    if (Object.keys(user).length !== 0) {
+      setNullUser(false)
+      setName(user.name.split(" ")[0])
+    }
+    else {
+      props.history.push('/login')
+    }
+  }, [user])
+
+  useEffect(() => {
+    // if(Object.keys(user).length !== 0){
+    //   setNullUser(false)
+    //   setName(user.name.split(" ")[0])
+    // }
+    // else{
+    //   props.history.push('/login')
+    // }
+  }, [user])
+
+  const handleLogout = () => {
+    localStorage.removeItem('user')
+    setNullUser(true)
+    props.history.push('/login')
+  }
 
   const getdata = async () => {
     const havedata = await Products.get()
       .then(snapshot => {
         snapshot.docs.forEach(doc => {
-          setdata(d => [...d,doc.data()])
+          setdata(d => [...d, doc.data()])
         })
       })
   }
@@ -36,10 +57,38 @@ const Home = () => {
 
   }, [])
 
-  console.log(data);
+  console.log(nullUser);
 
   return (
     <div className="body">
+
+      <div className="home-nav">
+        <div className="container">
+          <div className="brand">
+            <img src={Logo} style={{ width: '40px' }} alt=""></img>
+            <p>Kisan Foods</p>
+          </div>
+          <ul>
+            <li><Link to="/dashboard">Dashboard</Link></li>
+            <li><Link to="/profile">Profile</Link></li>
+            <li>
+              {!nullUser && (
+                <div className="user-sec">
+                  <div className="username">
+                    Hello {name}!
+                  </div>
+
+                  <button className="logout-btn"
+                    onClick={handleLogout}
+                  >Logout</button>
+                </div>
+              )}
+            </li>
+          </ul>
+
+        </div>
+
+      </div>
       <div className="home">
         <div >
           <Carousel className="home_container" autoPlay animation="slide" >
@@ -69,24 +118,32 @@ const Home = () => {
 
           <br></br><br></br>
 
-          <Product />
+          {!nullUser && (
+            <Product />
+          )}
+
 
           <br></br><br></br>
-          <div className="">
-            <div className="d-flex flex-wrap" style={{rowGap: '16px'}}>
-              {
-                data.map(data => {
-                  return (
-                    <div className="px-2 product-card">
-                      <Card userdata={data} />
-                    </div>
-                  )
-                })
-              }
+
+          {!nullUser && (
+            <div className="">
+              <div className="d-flex flex-wrap" style={{ rowGap: '16px' }}>
+                {
+                  data.map(data => {
+                    return (
+                      <div className="px-2 product-card">
+                        <Card userdata={data} />
+                      </div>
+                    )
+                  })
+                }
+              </div>
             </div>
+          )}
 
 
-          </div>
+
+
 
           <br></br>
 

@@ -13,14 +13,6 @@ const Payment = () => {
     console.log(currentDate)
 
     const onToken = (token) => {
-        // fetch('/save-stripe-token', {
-        //     method: 'POST',
-        //     body: JSON.stringify(token),
-        // }).then(response => {
-        //     response.json().then(data => {
-        //         console.log(data)
-        //     });
-        // });
         console.log(token)
     }
 
@@ -31,7 +23,7 @@ const Payment = () => {
                 <p>Sold by: <span>{product.name}</span></p>
                 <p>Date: <span>{currentDate}</span></p>
                 <p>Buyer name: <span>{user.name}</span></p>
-                <p>Address: <span>{product.location}</span></p>
+                <p>Shipping address: <span>62/A/5, G.T.Road(W)</span></p>
                 <p>Payment method: <span>Card</span></p>
             </div>
             <div className="payment-details">
@@ -50,7 +42,7 @@ const Payment = () => {
                     <StripeCheckout
                         token={onToken}
                         stripeKey="pk_test_51Hr13fE7BvSkBO4prE35EeVzyGVKfQCPfpfcOZZkSLfa4jfONQeEOrd9A4wFIERlRXuVpBu3NYVm1YwCrFfY0gs400dAaCrTp0"
-                        amount={4000}
+                        amount={8100}
                         currency="INR"
                         shippingAddress
                         billingAddress={true}
