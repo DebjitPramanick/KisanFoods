@@ -21,6 +21,8 @@ function UserProfile(props) {
         <p style={{color:'#808080'}}>{data.name}</p>
         <br></br>
        <h5 style={{color:'#333'}}> Items Sold </h5> 
+
+       
        <p style={{color:'808080'}}>Potato</p>
         <br></br>
       <h5 style={{color:'#333'}}>  Location  </h5> 
